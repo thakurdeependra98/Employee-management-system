@@ -1,12 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-
-
 const Home = () => {
   return (
     <>
-         
         <div className='md:max-w-screen-lg mx-auto mt-5'>
             <NavLink to="/create" ><button className='bg-blue-700 hover:bg-blue-600 ease-in-out py-2 px-4 rounded-md font-medium text-white'> + Add Employee</button></NavLink>
             <div>
