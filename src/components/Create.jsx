@@ -6,17 +6,20 @@ const Create = () => {
 
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
-  const [position, setPosition] = useState("")
+  const [designation, setdesignation] = useState("")
   const [salary, setSalary] = useState("")
 
-  const EmployeeList = (useNavigate);
+  const history = useNavigate();
 
   const submitHandler = (e) =>{
     e.preventDefault();
     axios.post('https://675b05339ce247eb193566f9.mockapi.io/crud',
-      {name:name, email:email, position:position, salary:salary},
-      console.log({name, email, position, salary})
+      {name:name, email:email, designation:designation, salary:salary},
+      console.log({name, email, designation, salary}),
     )
+    .then(() =>{
+      history('/')
+    })
   };
 
   return (
@@ -52,13 +55,13 @@ const Create = () => {
               </div>
         </div>   
         <div className="sm:col-span-4 mt-2">
-              <label htmlFor="position" className="block text-md/6 font-medium text-gray-900">
-                Position
+              <label htmlFor="designation" className="block text-md/6 font-medium text-gray-900">
+                Designation
               </label>
               <div className="mt-1">
-                <input onChange={(e) =>setPosition(e.target.value)}
-                  id="position"
-                  name="position"
+                <input onChange={(e) =>setdesignation(e.target.value)}
+                  id="designation"
+                  name="designation"
                   type="text"
                   autoComplete="position"
                   className="block w-[30vw] rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
