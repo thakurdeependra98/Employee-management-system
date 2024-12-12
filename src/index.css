@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    background-color: #f1f1f1;
+    color: #000000;
+    font-family: gilroy;
+}
