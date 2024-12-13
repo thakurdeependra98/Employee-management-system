@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
@@ -17,6 +17,14 @@ const Home = () => {
         getdata();
     }, []);
     
+    const setLocalStoarage = (id, name, email, designation, salary) => {
+        localStorage.setItem('id', id)
+        localStorage.setItem('name', name)
+        localStorage.setItem('email', email)
+        localStorage.setItem('designation', designation)
+        localStorage.setItem('salary', salary)
+    }
+
     const deleteHandeler = (id) => {
         axios.delete(`https://675b05339ce247eb193566f9.mockapi.io/crud/${id}`)
        .then((res) => {
@@ -48,8 +56,8 @@ const Home = () => {
                                     <td className='border px-4 py-2 text-left'>{each.email}</td>
                                     <td className='border px-4 py-2 text-left'>{each.designation}</td>
                                     <td className='border px-4 py-2 text-left'>{each.salary}</td>
-                                    <td> <button className='flex items-center gap-2 text-white py-2 px-4 bg-blue-700'> <MdEdit className='bg-blue-700'/> Edit</button></td>
-                                    <td> <button onClick={()=>deleteHandeler(each.id)} className='flex items-center gap-2 text-white py-2 px-4 bg-red-700'> <MdDelete className='bg-red-700'/> Delete</button></td>
+                                    <td> <Link to="/update" ><button onClick={()=>setLocalStoarage(each.id, each.name, each.email, each.designation, each.salary)} className='flex items-center gap-2 text-white p-3 rounded-full bg-sky-200 '> <MdEdit className='bg-sky-200'/></button></Link> </td>
+                                    <td> <button onClick={()=>deleteHandeler(each.id)} className='flex items-center gap-2 text-white p-3 rounded-full bg-red-700'> <MdDelete className='bg-red-700'/></button></td>
                                 </tr>
                             </tbody>
                         )
